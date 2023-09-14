@@ -1,0 +1,25 @@
+*.elc
+*.pyc
+*~
+*~.nib
+*.DS_STORE
+*.DS_Store
+*.orig
+env
+
+# vim stuff
+.ropeproject
+*.swp
+*.vim
+
+# Visual Studio Code
+.vscode
+
+# pyenv
+.python-version
+
+# pytest
+pytest.ini
+
+# Coverage
+.coverage
