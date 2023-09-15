@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'polls',
 ]
 
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'cctutorial.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'cctutorial/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

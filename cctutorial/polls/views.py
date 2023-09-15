@@ -1,7 +1,12 @@
 import datetime
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.template.loader import render_to_string
-from polls.models import Choice, Question
+from .models import Choice, Question
+
+
+def home(request):
+    return render(request, 'home.html') # add reverse() URL for home
 
 
 def index(request):
