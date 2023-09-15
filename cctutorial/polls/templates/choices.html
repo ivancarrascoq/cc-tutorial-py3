@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Choices{% endblock %}
+
+{% block content %}
+
+<h1>Choices</h1>
+    
+    {% if choice %}
+        <h2>Choice: {{ choice.choice_text }}</h2>
+        <p>Question: {{ choice.question.question_text }}</p>
+        <p>Votes: {{ choice.votes }}</p>
+    {% else %}
+        <ul>
+            {% for choice in choices %}
+                <li>
+                    <h2>Choice: {{ choice.choice_text }}</h2>
+                    <p>Question: {{ questions.forloop.counter0 }}</p>
+                    <p>Votes: {{ choice.votes }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

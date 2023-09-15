@@ -6,6 +6,7 @@
 *.DS_Store
 *.orig
 env
+.idea/
 
 # vim stuff
 .ropeproject
