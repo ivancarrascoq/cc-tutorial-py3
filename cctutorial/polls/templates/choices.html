@@ -1,25 +1,29 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block title %}Choices{% endblock %} {% block
+content %}
 
-{% block title %}Choices{% endblock %}
+<h2>Polls</h2>
 
-{% block content %}
+{% if question %}
+<p>Question: {{ question.question_text }}</p>
+<ul>
+  {% for choice in choices %}
+  <li>Choice: {{ choice.choice_text }} - Votes: {{ choice.votes }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<ul>
+  {% for question, choices in questions.items %}
+  <li>
+    <p>Question: {{ question }}</p>
+    <ul>
+      {% if choices %} {% for choice in choices %}
+      <li>Choice: {{ choice.choice_text }} - Votes: {{ choice.votes }}</li>
+      {% endfor %} {% else %}
+      <li>No choices available.</li>
+      {% endif %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
 
-<h1>Choices</h1>
-    
-    {% if choice %}
-        <h2>Choice: {{ choice.choice_text }}</h2>
-        <p>Question: {{ choice.question.question_text }}</p>
-        <p>Votes: {{ choice.votes }}</p>
-    {% else %}
-        <ul>
-            {% for choice in choices %}
-                <li>
-                    <h2>Choice: {{ choice.choice_text }}</h2>
-                    <p>Question: {{ questions.forloop.counter0 }}</p>
-                    <p>Votes: {{ choice.votes }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-{% endblock %}
+{% endif %} {% endblock %}
