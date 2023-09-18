@@ -3,6 +3,13 @@
 
 <h2>Polls</h2>
 
+{% if messages %}
+{% for message in messages %}
+<h3>{{ message }}</h3>
+{% endfor %}
+{% endif %}
+
+
 {% if question %}
 <p>Question: {{ question.question_text }}</p>
 <ul>
@@ -10,7 +17,9 @@
   <li>Choice: {{ choice.choice_text }} - Votes: {{ choice.votes }}</li>
   {% endfor %}
 </ul>
-{% else %}
+
+{% elif questions %}
+
 <ul>
   {% for question, choices in questions.items %}
   <li>
@@ -26,4 +35,12 @@
   {% endfor %}
 </ul>
 
-{% endif %} {% endblock %}
+{% else %}
+
+<p>{{ error_message }}</p>
+
+{% endif %}
+
+
+
+{% endblock %}
