@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Index{% endblock %}
+
+{% block content %}
+
+<h2>All Questions</h2>
+
+
+{% if latest_question_list %}
+<ul>
+  {% for question in latest_question_list %}
+  <li>
+    <b>Question:</b>
+    <a href="{% url 'admin:polls_question_change' object_id=question.id %}">{{ question.question_text }}</a>
+     - <b>Publication date:</b> 
+    {{ question.pub_date }}. <a href="{% url 'polls:vote' question_id=question.id %}">Vote [user view]</a>
+  </li>  
+  {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+
+
+<h2>Other links</h2>
+
+<ul>
+  <li>
+    <b>Top 5 most popular </b><a href="{% url 'polls:most-popular-choice' %}">Link</a>
+  </li>
+  <li>
+    <b>All choices </b><a href="{% url 'polls:choices' %}">Link</a>
+  </li>
+  <li>
+    <b>Today's question </b><a href="{% url 'polls:question' %}">Link</a>
+  </li>
+</ul>
+
+
+
+{% endblock %}

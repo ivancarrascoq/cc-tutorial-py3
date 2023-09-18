@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Choices{% endblock %}
+{% block content %}
+
+<h2>Polls</h2>
+
+{% if messages %}
+{% for message in messages %}
+<h3>{{ message }}</h3>
+{% endfor %}
+{% endif %}
+
+
+{% if question %}
+<p>Question: {{ question.question_text }}</p>
+<ul>
+  {% for choice in choices %}
+  <li>Choice: {{ choice.choice_text }} - Votes: {{ choice.votes }}</li>
+  {% endfor %}
+</ul>
+
+{% elif questions %}
+
+<ul>
+  {% for question, choices in questions.items %}
+  <li>
+    <p>Question: {{ question }}</p>
+    <ul>
+      {% if choices %} {% for choice in choices %}
+      <li>Choice: {{ choice.choice_text }} - Votes: {{ choice.votes }}</li>
+      {% endfor %} {% else %}
+      <li>No choices available.</li>
+      {% endif %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+
+<p>{{ error_message }}</p>
+
+{% endif %}
+
+
+
+{% endblock %}
